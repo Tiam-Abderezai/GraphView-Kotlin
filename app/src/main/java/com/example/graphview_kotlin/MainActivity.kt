@@ -8,6 +8,10 @@ import com.jjoe64.graphview.Viewport
 import com.jjoe64.graphview.series.DataPoint
 import com.jjoe64.graphview.series.LineGraphSeries
 import kotlin.random.Random
+import com.jjoe64.graphview.helper.StaticLabelsFormatter
+
+
+
 
 class MainActivity : AppCompatActivity() {
     private lateinit var series: LineGraphSeries<DataPoint>
@@ -16,6 +20,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var button: Button
     val x = mutableListOf(0.0, 10.0, 20.0, 30.0, 40.0, 50.0, 60.0, 70.0, 80.0, 90.0, 100.0)
     val y = mutableListOf(0.0, 10.0, 20.0, 30.0, 40.0, 50.0, 60.0, 70.0, 80.0, 90.0, 100.0)
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,6 +47,16 @@ class MainActivity : AppCompatActivity() {
         viewport.setMinY(0.0)
         viewport.setMaxY(100.0)
         viewport.isScrollable = true
+
+        var xLabels   = StaticLabelsFormatter(graph)
+        var yLabels   = StaticLabelsFormatter(graph)
+        xLabels.setHorizontalLabels(
+            arrayOf("0", "10", "20", "30", "40", "50", "60", "70", "80", "90", "100")
+        )
+        yLabels.setVerticalLabels(
+            arrayOf("0", "10", "20", "30", "40", "50", "60", "70", "80", "90", "100")
+        )
+//        graph.gridLabelRenderer.labelFormatter = xLabels
 
         for (i in 0..x.size - 1) {
             series.appendData(
