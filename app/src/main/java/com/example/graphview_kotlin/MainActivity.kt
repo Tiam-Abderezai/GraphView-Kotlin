@@ -81,6 +81,7 @@ class MainActivity : AppCompatActivity() {
             )
         )
 
+
         for (i in 0..x.size - 1) {
             series.appendData(
                 DataPoint(
