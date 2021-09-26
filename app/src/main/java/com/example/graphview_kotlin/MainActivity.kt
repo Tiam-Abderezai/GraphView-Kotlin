@@ -41,6 +41,7 @@ class MainActivity : AppCompatActivity() {
     fun makeGraph() {
         // Give x and y axises their range
         viewport = graph.viewport
+        graph.gridLabelRenderer.setHumanRounding(false)
         viewport.isYAxisBoundsManual = true
         viewport.setMinX(0.0)
         viewport.setMaxX(100.0)
@@ -48,15 +49,37 @@ class MainActivity : AppCompatActivity() {
         viewport.setMaxY(100.0)
         viewport.isScrollable = true
 
-        var xLabels   = StaticLabelsFormatter(graph)
-        var yLabels   = StaticLabelsFormatter(graph)
-        xLabels.setHorizontalLabels(
-            arrayOf("0", "10", "20", "30", "40", "50", "60", "70", "80", "90", "100")
+        val staticLabelsFormatter   = StaticLabelsFormatter(graph)
+        staticLabelsFormatter.setHorizontalLabels(
+            arrayOf(
+                "0",
+                "10",
+                "20",
+                "30",
+                "40",
+                "50",
+                "60",
+                "70",
+                "80",
+                "90",
+                "100"
+            )
         )
-        yLabels.setVerticalLabels(
-            arrayOf("0", "10", "20", "30", "40", "50", "60", "70", "80", "90", "100")
+        staticLabelsFormatter.setVerticalLabels(
+            arrayOf(
+                "0",
+                "10",
+                "20",
+                "30",
+                "40",
+                "50",
+                "60",
+                "70",
+                "80",
+                "90",
+                "100"
+            )
         )
-//        graph.gridLabelRenderer.labelFormatter = xLabels
 
         for (i in 0..x.size - 1) {
             series.appendData(
